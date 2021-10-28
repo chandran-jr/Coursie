@@ -8,12 +8,81 @@ function Cards() {
             <Card 
             courseId="301"
             courseName="Introduction to Artificial Intelligence"
-            provider="Udacity" />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
+            provider="Udacity"
+            uni="Stanford University"
+            parentSub="Computer Science"
+            childSub="Artificial Intelligence"
+            url="https://www.ai-class.com/"
+            nextSesh="Oct, 2011"
+            length="10"
+            vidUrl="https://www.youtube.com/watch?feature=player_embedded&v=BnIJ7Ba5Sr4"
+             />
+
+<Card 
+            courseId="301"
+            courseName="Introduction to Artificial Intelligence"
+            provider="Udacity"
+            uni="Stanford University"
+            parentSub="Computer Science"
+            childSub="Artificial Intelligence"
+            url="https://www.ai-class.com/"
+            nextSesh="Oct, 2011"
+            length="10"
+            vidUrl="https://www.youtube.com/watch?feature=player_embedded&v=BnIJ7Ba5Sr4"
+             />
+
+<Card 
+            courseId="301"
+            courseName="Introduction to Artificial Intelligence"
+            provider="Udacity"
+            uni="Stanford University"
+            parentSub="Computer Science"
+            childSub="Artificial Intelligence"
+            url="https://www.ai-class.com/"
+            nextSesh="Oct, 2011"
+            length="10"
+            vidUrl="https://www.youtube.com/watch?feature=player_embedded&v=BnIJ7Ba5Sr4"
+             />
+
+<Card 
+            courseId="301"
+            courseName="Introduction to Artificial Intelligence"
+            provider="Udacity"
+            uni="Stanford University"
+            parentSub="Computer Science"
+            childSub="Artificial Intelligence"
+            url="https://www.ai-class.com/"
+            nextSesh="Oct, 2011"
+            length="10"
+            vidUrl="https://www.youtube.com/watch?feature=player_embedded&v=BnIJ7Ba5Sr4"
+             />
+
+<Card 
+            courseId="301"
+            courseName="Introduction to Artificial Intelligence"
+            provider="Udacity"
+            uni="Stanford University"
+            parentSub="Computer Science"
+            childSub="Artificial Intelligence"
+            url="https://www.ai-class.com/"
+            nextSesh="Oct, 2011"
+            length="10"
+            vidUrl="https://www.youtube.com/watch?feature=player_embedded&v=BnIJ7Ba5Sr4"
+             />
+
+<Card 
+            courseId="301"
+            courseName="Introduction to Artificial Intelligence"
+            provider="Udacity"
+            uni="Stanford University"
+            parentSub="Computer Science"
+            childSub="Artificial Intelligence"
+            url="https://www.ai-class.com/"
+            nextSesh="Oct, 2011"
+            length="10"
+            vidUrl="https://www.youtube.com/watch?feature=player_embedded&v=BnIJ7Ba5Sr4"
+             />
+            
         </div>
     )
 }
