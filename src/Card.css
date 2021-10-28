@@ -6,3 +6,18 @@
     border-radius: 25px;
     margin: 2px 6px 10px 6px;
 }
+
+.courseId {
+    margin: 10px 0px 0 20px;
+    color:rgb(241, 47, 112);
+}
+
+.courseName {
+    color:rgb(241, 47, 112);
+    margin: 5px 0px 0 20px;
+}
+
+.provider {
+    color: gray;
+    margin: 4px 0px 0 20px;
+}

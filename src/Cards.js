@@ -5,7 +5,10 @@ import Card from './Card.js';
 function Cards() {
     return (
         <div className="Cards">
-            <Card/>
+            <Card 
+            courseId="301"
+            courseName="Introduction to Artificial Intelligence"
+            provider="Udacity" />
             <Card />
             <Card />
             <Card />

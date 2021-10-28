@@ -14,9 +14,9 @@ function App() {
     <Cards/>
 
 
-    <div className="pagination">
+  { /*  <div className="pagination">
     <Pagination count={10} color="secondary" />
-    </div>
+    </div> */ }
 
 
     </div>
