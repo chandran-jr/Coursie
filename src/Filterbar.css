@@ -1,8 +1,70 @@
 .Filterbar {
-    width: 50%;
+    width: 71%;
     height: 70px;
+    display: flex;
     background-color: white;
-    margin: 10px auto;
+    margin: 8px auto;
     border-radius: 0 20px 0 20px;
-    
+    border: 2px solid rgb(241, 47, 112);
+    box-shadow: -1px 4px 20px -6px rgba(0, 0, 0, 0.8);
+}
+
+.Filterbar__card {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    border: 2px solid rgb(241, 47, 112);
+    margin-top: 9px;
+    margin-left: 12px;
+    border-radius: 8px;
+    box-shadow: -1px 4px 20px -6px rgba(0, 0, 0, 0.5);
+}
+
+.Filterbar__card > input {
+    outline: none;
+    border: none;
+    height: 40px;
+    color: rgb(241, 47, 112);
+    font-size: 15px;
+    width: 80%;
+}
+
+.Filterbar__CardIcon {
+    padding-right: 10px;
+    padding-left: 5px;
+    color: rgb(241, 47, 112) !important;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgb(241, 47, 112);
+    opacity: 0.7;
+    font-size: 15px;
+  }
+
+.css-1yq5fb3-MuiButtonBase-root-MuiIconButton-root {
+      color:rgb(241, 47, 112) !important;
+  }
+  
+  .css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.Mui-checked {
+    color:rgb(241, 47, 112) !important;
+  }
+
+  .Filterbar__cardCheck {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+  }
+
+  .Filterbar__cardCheck > h3 {
+    font-size: 15px;
+    color:rgb(241, 47, 112);
+}
+
+.button {
+    background-color: rgb(241, 47, 112) !important;
+    height: 35px !important;
+    margin-left: 15px !important;
+    margin-top: auto !important;
+    margin-bottom: auto !important;
 }

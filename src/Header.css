@@ -1,9 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Pacifico');
-
 .Header {
     height: 150px;
     width: 90%;
-    margin-top: 20px;
+    margin-top: 10px;
     margin-left: auto;
     margin-right: auto;
     display: grid;
@@ -14,7 +12,7 @@
 }
 
 .header__heading {
-    font-size: 55px;
+    font-size: 65px;
     color: white;
     font-family: cursive;
     -webkit-text-stroke: 2px rgb(156, 6, 56);
