@@ -22,6 +22,13 @@ function Cards() {
        })
      },[]);
     
+     const handleChange = (event, value) => {
+        setcurrentPage(value);
+        const startIndex = (value * 6) - 6;
+       const endIndex = startIndex + 6;
+       const temp= subjects.slice(startIndex, endIndex);
+       setCurrentItems(temp);
+      };
 
 
     return (
@@ -42,7 +49,8 @@ function Cards() {
     
     />): null}
 
-            
+{subjects?<Pagination count={Math.round(subjects.length/6)} page={currentPage} onChange={handleChange} color='primary' style={{margin:'auto'}} />:null}
+
         </div>
     )
 }

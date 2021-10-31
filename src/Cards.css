@@ -6,3 +6,7 @@
     align-items: center;
     justify-content: center;
 }
+
+.css-1to7aaw-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
+    background-color: rgb(241, 47, 112) !important;
+}
