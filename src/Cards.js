@@ -17,7 +17,7 @@ function Cards() {
        .then((response)=>{
          setSubjects(response.data);
          setPages(Math.round(response.data.length/6));
-         
+         setPages(Math.round(response.data.length/6));
          setCurrentItems(response.data.slice(0,6));
        })
      },[]);
@@ -28,7 +28,7 @@ function Cards() {
         <div className="Cards">
 
 
-    {currentItems&&currentItems.map((item) =>  <Card
+    {currentItems?currentItems.map((item) =>  <Card
     courseId={item['Course Id']}
     courseName={item['Course Name']}
     provider={item['Provider']}
@@ -40,7 +40,7 @@ function Cards() {
     length={item['Length']}
     vidUrl={item['Video(Url)']}
     
-    />)}
+    />): null}
 
             
         </div>
