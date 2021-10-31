@@ -9,6 +9,11 @@
     box-shadow: -1px 4px 20px -6px rgba(0, 0, 0, 0.6);
 }
 
+.Card:hover{
+    border: 4px solid rgb(0, 119, 255);
+    transition: color 250ms ease-in-out;
+}
+
 .courseId {
     margin: 10px 0px 0 20px;
     color:rgb(241, 47, 112);
@@ -38,8 +43,8 @@
 .uni {
     color: slategrey;
     margin-left: 20px;
-    position: absolute;
-    top: 125px;
+    margin-top: 10px;
+
 }
 
 .childParent {

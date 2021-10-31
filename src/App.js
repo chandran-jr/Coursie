@@ -2,8 +2,7 @@ import React from 'react';
 import './App.css';
 import Header from './Header.js';
 import Filterbar from './Filterbar.js';
-import Pagination from '@mui/material/Pagination';
-import Cards from './Cards.js';
+import Cards from './Cards';
 
 function App() {
   return (
@@ -12,12 +11,6 @@ function App() {
     <Filterbar/>
 
     <Cards/>
-
-
-  { /*  <div className="pagination">
-    <Pagination count={10} color="secondary" />
-    </div> */ }
-
 
     </div>
   );

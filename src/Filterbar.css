@@ -1,5 +1,5 @@
 .Filterbar {
-    width: 71%;
+    width: 69%;
     height: 70px;
     display: flex;
     background-color: white;
@@ -67,4 +67,17 @@
     margin-left: 15px !important;
     margin-top: auto !important;
     margin-bottom: auto !important;
+}
+
+.refresh {
+  color: rgb(241, 47, 112) !important;
+  margin-left: 15px !important;
+  margin-top: auto !important;
+  margin-bottom: auto !important;
+  cursor: pointer;
+}
+
+.searchIcon{
+  margin-right: 4px !important;
+  font-size: 20px !important;
 }

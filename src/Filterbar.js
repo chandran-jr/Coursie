@@ -8,22 +8,40 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DatePicker from '@mui/lab/DatePicker';
 import Checkbox from '@mui/material/Checkbox';
 import Button from '@mui/material/Button';
+import RefreshIcon from '@mui/icons-material/Refresh';
+import SearchIcon from '@mui/icons-material/Search';
+
 
 function Filterbar() {
+
     const [value, setValue] = useState(null);
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
+    const [course,setCourse] = useState("");
+    const [childSub,setchildSub] = useState("");
+
+    const refresh = () => {
+        setCourse("");
+        setchildSub("");
+        setValue(null);
+    }
+
+    const search = () => {
+
+    }
 
     return (
+
+        <div>
         <div className="Filterbar">
             
             <div className="Filterbar__card">
                 <LocalLibraryIcon className="Filterbar__CardIcon" />
-                <input placeholder="Course" type="text" />
+                <input onChange={(e) => setCourse(e.target.value)} value={course} placeholder="Course" type="text" />
             </div>
 
             <div className="Filterbar__card">
                 <FormatLineSpacingIcon className="Filterbar__CardIcon" />
-                <input placeholder="Child Subject" type="text" />
+                <input onChange={(e) => setchildSub(e.target.value)} value={childSub} placeholder="Child Subject" type="text" />
             </div>
 
 
@@ -32,6 +50,7 @@ function Filterbar() {
                 <DatePicker
                 label="Date"
                 value={value}
+                border="none"
                 onChange={(newValue) => {
                 setValue(newValue);
                         }}
@@ -45,9 +64,14 @@ function Filterbar() {
             <h3>Self Paced</h3>
              </div>
 
-             <Button className="button" variant="contained">Search</Button>
+            
+             <Button onClick={search} className="button" variant="contained">
+             <SearchIcon className="searchIcon"/> Search
+             </Button>
 
-             <Button className="button" variant="contained">Reset</Button>
+             <RefreshIcon onClick={refresh} className="refresh"/>
+
+        </div>
 
         </div>
     )
