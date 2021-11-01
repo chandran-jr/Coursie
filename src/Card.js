@@ -1,5 +1,6 @@
 import React from 'react';
 import './Card.css';
+import EventIcon from '@mui/icons-material/Event';
 
 function Card({courseId, courseName, provider, uni, parentSub, childSub, url, nextSesh, length, vidUrl}) {
     return (
@@ -9,7 +10,12 @@ function Card({courseId, courseName, provider, uni, parentSub, childSub, url, ne
 
             <div className="idDate">
             <h4 className="courseId">{courseId}</h4>
-            <h4 className="nextSesh">{nextSesh}</h4>
+
+            <div className="date">
+            <EventIcon className="eventicon"/>
+            <h4 className="nextSesh">{nextSesh}</h4> 
+            </div>
+
             </div>
 
             <h4 className="provider">{provider}</h4>

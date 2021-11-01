@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Filterbar.css';
 import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
 import FormatLineSpacingIcon from '@mui/icons-material/FormatLineSpacing';
@@ -10,6 +10,7 @@ import Checkbox from '@mui/material/Checkbox';
 import Button from '@mui/material/Button';
 import RefreshIcon from '@mui/icons-material/Refresh';
 import SearchIcon from '@mui/icons-material/Search';
+import Cards from './Cards';
 
 
 function Filterbar() {
@@ -18,6 +19,8 @@ function Filterbar() {
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
     const [course,setCourse] = useState("");
     const [childSub,setchildSub] = useState("");
+    const [checked,setChecked] = useState(false);
+    const [cardShow,setcardShow] = useState(<Cards/>);
 
     const refresh = () => {
         setCourse("");
@@ -26,7 +29,16 @@ function Filterbar() {
     }
 
     const search = () => {
+            setcardShow(<Cards
+                cn={course}
+                cs={childSub}
+                date={value}
+                sp={checked}
+            />);
+    }
 
+    const checkboxClick = (e) => {
+        setChecked(e.target.checked);
     }
 
     return (
@@ -60,7 +72,7 @@ function Filterbar() {
             </div>
 
             <div className="Filterbar__cardCheck">
-            <Checkbox {...label} defaultChecked />
+            <Checkbox onChange={checkboxClick} {...label} />
             <h3>Self Paced</h3>
              </div>
 
@@ -72,6 +84,8 @@ function Filterbar() {
              <RefreshIcon onClick={refresh} className="refresh"/>
 
         </div>
+
+        {cardShow}
 
         </div>
     )

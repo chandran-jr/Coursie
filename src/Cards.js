@@ -5,7 +5,7 @@ import axios from 'axios';
 import Pagination from '@mui/material/Pagination';
 
 
-function Cards() {
+function Cards({cn,cs,date,sp}) {
 
     const [subjects,setSubjects] = useState(null);
     const [pages,setPages] = useState(null);
