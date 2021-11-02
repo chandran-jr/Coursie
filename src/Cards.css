@@ -3,6 +3,7 @@
     flex-wrap: wrap;
     width: 80%;
     margin: auto;
+    position: relative;
     align-items: center;
     justify-content: center;
 }
@@ -14,11 +15,14 @@
 .pagination {
     width: fit-content;
     position:absolute;
-    bottom:5px;
     margin: auto;
+    top: 100%;
     
 }
 
 .count {
-   
+   position: absolute;
+   left: 525px;
+   bottom: 535px;
+ 
 }

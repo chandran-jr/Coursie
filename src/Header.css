@@ -3,6 +3,7 @@
     width: 90%;
     margin-top: 10px;
     margin-left: auto;
+    position: relative;
     margin-right: auto;
     display: grid;
     place-items: center;

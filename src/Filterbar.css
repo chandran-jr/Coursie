@@ -2,6 +2,7 @@
     width: 69%;
     height: 70px;
     display: flex;
+    position: relative;
     background-color: white;
     margin: 9px auto;
     border-radius: 0 20px 0 20px;

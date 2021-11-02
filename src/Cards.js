@@ -79,7 +79,9 @@ function Cards({cn,cs,date,sp}) {
     return (
     <div className="Cards">
 
-    <Count className="count" length={dataSearch.length} />
+    <div className="count">
+    <Count length={dataSearch.length} />
+    </div>
 
 {currentData.map((post, index) => (
     <div key={index}>
