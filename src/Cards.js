@@ -3,53 +3,105 @@ import './Cards.css';
 import Card from './Card.js';
 import axios from 'axios';
 import Pagination from '@mui/material/Pagination';
+import Count from './Count.js';
 
 
 function Cards({cn,cs,date,sp}) {
 
-    const [subjects,setSubjects] = useState(null);
-    const [pages,setPages] = useState(null);
+    const [subjects,setSubjects] = useState([]);
     const [currentPage,setcurrentPage] = useState(1);
-    const [currentItems,setCurrentItems] = useState(null);
+    const includeCourse = ['Course Name'];
+    const includeChild = ['Child Subject'];
+    const [start,setStart] = useState(0);
+    const [end,setEnd] = useState(6);
+
+    let currentData;
+    const dateToSearch = new Date(date);
+    dateToSearch.setHours(0,0,0,0);
 
     useEffect(()=>{
         axios.get('https://nut-case.s3.amazonaws.com/coursessc.json')
        .then((response)=>{
-         setSubjects(response.data);
-         setPages(Math.round(response.data.length/6));
-         setPages(Math.round(response.data.length/6));
-         setCurrentItems(response.data.slice(0,6));
+         setSubjects(response.data.slice(0,300));
        })
-     },[]);
-    
+     });
+
+
+     function convert(str) {
+        var newDate = new Date(str),
+          mnth = ("0" + (newDate.getMonth() + 1)).slice(-2),
+          day = ("0" + newDate.getDate()).slice(-2);
+        return [newDate.getFullYear(), mnth, day].join("-");
+      }
+
+      const newDateToSearch = convert(dateToSearch);
+
+     let dataSearch  = subjects.filter(item =>{
+        return Object.keys(item).some(key =>{
+           return includeCourse.includes(key) ? item[key].toString().toLowerCase().includes(cn.toString().toLowerCase()) : false }
+            )
+    })
+   .filter(items =>{
+        return Object.keys(items).some(key =>{
+            return includeChild.includes(key) ? items[key].toString().toLowerCase().includes(cs.toString().toLowerCase()) : false  }
+            )
+    }).filter(function (el) {    
+        var filteDateString = el['Next Session Date']
+        var replacedDate = filteDateString.replace('nd','').replace('rd','').replace('th','').replace('st','')
+        var filterDate = new Date(replacedDate)
+        const stringDate = convert(filterDate)
+        if(date !== 'Invalid Date'){
+            if( filterDate !== 'Invalid Date' ){
+                if(stringDate === newDateToSearch){
+                    return el
+                } 
+            }
+        }
+        else{
+            return el
+        }
+        
+        
+        
+      })
+
+      currentData = dataSearch.slice(start,end);
+
      const handleChange = (event, value) => {
         setcurrentPage(value);
-        const startIndex = (value * 6) - 6;
-       const endIndex = startIndex + 6;
-       const temp= subjects.slice(startIndex, endIndex);
-       setCurrentItems(temp);
+        const st = (value*6)-6;
+        const en = st+6;
+         setStart(st);
+         setEnd(en)
       };
 
 
     return (
-        <div className="Cards">
+    <div className="Cards">
 
+    <Count className="count" length={dataSearch.length} />
 
-    {currentItems?currentItems.map((item) =>  <Card
-    courseId={item['Course Id']}
-    courseName={item['Course Name']}
-    provider={item['Provider']}
-    uni={item['Universities/Institutions']}
-    parentSub={item['Parent Subject']}
-    childSub={item['Child Subject']}
-    url={item['Url']}
-    nextSesh={item['Next Session Date']}
-    length={item['Length']}
-    vidUrl={item['Video(Url)']}
-    
-    />): null}
+{currentData.map((post, index) => (
+    <div key={index}>
+    <Card
+    courseId={post['Course Id']}
+    courseName={post['Course Name']}
+    provider={post['Provider']}
+    uni={post['Universities/Institutions']}
+    parentSub={post['Parent Subject']}
+    childSub={post['Child Subject']}
+    url={post['Url']}
+    nextSesh={post['Next Session Date']}
+    length={post['Length']}
+    vidUrl={post['Video(Url)']}
+    />
+    </div>
+  ))
+}
 
-{subjects?<Pagination count={Math.round(subjects.length/6)} page={currentPage} onChange={handleChange} color='primary' style={{margin:'auto'}} />:null}
+    {
+        dataSearch ? <Pagination className="pagination" count={Math.round(dataSearch.length/6)} page={currentPage} onChange={handleChange} color='primary' style={{margin:'auto'}} />:null
+    }
 
         </div>
     )

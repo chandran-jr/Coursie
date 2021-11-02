@@ -10,3 +10,15 @@
 .css-1to7aaw-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
     background-color: rgb(241, 47, 112) !important;
 }
+
+.pagination {
+    width: fit-content;
+    position:absolute;
+    bottom:5px;
+    margin: auto;
+    
+}
+
+.count {
+   
+}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './Filterbar.css';
 import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
 import FormatLineSpacingIcon from '@mui/icons-material/FormatLineSpacing';
@@ -15,12 +15,17 @@ import Cards from './Cards';
 
 function Filterbar() {
 
-    const [value, setValue] = useState(null);
+    const [value, setValue] = useState();
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
     const [course,setCourse] = useState("");
     const [childSub,setchildSub] = useState("");
     const [checked,setChecked] = useState(false);
-    const [cardShow,setcardShow] = useState(<Cards/>);
+    const [cardShow,setcardShow] = useState(<Cards
+        cn={course}
+        cs={childSub}
+        date={value}
+        sp={checked}
+    />);
 
     const refresh = () => {
         setCourse("");

@@ -1,11 +1,3 @@
-.pagination {
-    width: fit-content;
-    position:absolute;;
-    bottom:5px;
-    left: 40%;
-    
-}
-
 .App {
     height: 710px;
 }
