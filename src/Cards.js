@@ -13,6 +13,7 @@ function Cards({cn,cs,date,sp}) {
     const includeCourse = ['Course Name'];
     const includeChild = ['Child Subject'];
     const [start,setStart] = useState(0);
+    const [loading,setLoading] = useState(false);
     const [end,setEnd] = useState(6);
     const dateFromPicker = date;
     const dateToSearch = new Date(dateFromPicker);
@@ -21,10 +22,12 @@ function Cards({cn,cs,date,sp}) {
     let currentData;
 
     useEffect(()=>{
+      setLoading(true);
         axios.get('https://nut-case.s3.amazonaws.com/coursessc.json')
        .then((response)=>{
          setSubjects(response.data.slice(0,300));
        })
+       setLoading(false);
      });
 
      function convert(str) {
@@ -64,7 +67,21 @@ function Cards({cn,cs,date,sp}) {
       
       
       
+    }).filter(function (el) {    
+      var self = el['Next Session Date']
+      if(sp){
+              if(self==='Self paced'){
+                  return el
+              } 
+          }
+      else{
+          return el
+      }
+      
+      
+      
     });
+
 
       currentData = dataSearch.slice(start,end);
 
@@ -76,6 +93,19 @@ function Cards({cn,cs,date,sp}) {
          setEnd(en)
       };
 
+      const noCourse = ()=>{
+        if(dataSearch == ''){
+            return <h3 className="noCourses">No course found !!</h3>
+        }
+    }
+
+    const loadingSnippet = ()=>{
+      return( <div class="loader" role="status">
+    </div>)
+  }
+
+
+
 
     return (
     <div className="Cards">
@@ -83,6 +113,8 @@ function Cards({cn,cs,date,sp}) {
     <div className="count">
     <Count length={dataSearch.length} />
     </div>
+
+    { loading ? loadingSnippet() : noCourse()  }
 
 {currentData.map((post, index) => (
     <div key={index}>
