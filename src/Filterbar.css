@@ -31,6 +31,22 @@
     width: 80%;
 }
 
+.Filterbar__cardDate {
+  height: 50px;
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    margin-top: 9px;
+    margin-left: 12px;
+    border-radius: 8px;
+    box-shadow: -1px 4px 20px -6px rgba(0, 0, 0, 0.5);
+}
+
+.css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root {
+  color: rgb(241, 47, 112) !important;
+  border: 2px solid rgb(241, 47, 112) !important;
+}
+
 .Filterbar__CardIcon {
     padding-right: 10px;
     padding-left: 5px;

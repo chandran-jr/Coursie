@@ -14,10 +14,11 @@ function Cards({cn,cs,date,sp}) {
     const includeChild = ['Child Subject'];
     const [start,setStart] = useState(0);
     const [end,setEnd] = useState(6);
+    const dateFromPicker = date;
+    const dateToSearch = new Date(dateFromPicker);
+    dateToSearch.setHours(0,0,0,0);
 
     let currentData;
-    const dateToSearch = new Date(date);
-    dateToSearch.setHours(0,0,0,0);
 
     useEffect(()=>{
         axios.get('https://nut-case.s3.amazonaws.com/coursessc.json')
@@ -26,15 +27,13 @@ function Cards({cn,cs,date,sp}) {
        })
      });
 
-
      function convert(str) {
-        var newDate = new Date(str),
-          mnth = ("0" + (newDate.getMonth() + 1)).slice(-2),
-          day = ("0" + newDate.getDate()).slice(-2);
-        return [newDate.getFullYear(), mnth, day].join("-");
-      }
-
-      const newDateToSearch = convert(dateToSearch);
+      var date = new Date(str),
+        mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+        day = ("0" + date.getDate()).slice(-2);
+      return [date.getFullYear(), mnth, day].join("-");
+    }
+  const newDateToSearch = convert(dateToSearch);
 
      let dataSearch  = subjects.filter(item =>{
         return Object.keys(item).some(key =>{
@@ -46,24 +45,26 @@ function Cards({cn,cs,date,sp}) {
             return includeChild.includes(key) ? items[key].toString().toLowerCase().includes(cs.toString().toLowerCase()) : false  }
             )
     }).filter(function (el) {    
-        var filteDateString = el['Next Session Date']
-        var replacedDate = filteDateString.replace('nd','').replace('rd','').replace('th','').replace('st','')
-        var filterDate = new Date(replacedDate)
-        const stringDate = convert(filterDate)
-        if(date !== 'Invalid Date'){
-            if( filterDate !== 'Invalid Date' ){
-                if(stringDate === newDateToSearch){
-                    return el
-                } 
-            }
-        }
-        else{
-            return el
-        }
-        
-        
-        
-      })
+      var filteDateString = el['Next Session Date']
+      var replacedDate = filteDateString.replace('nd','').replace('rd','').replace('th','').replace('st','')
+      var filterDate = new Date(replacedDate)
+      const stringDate = convert(filterDate);
+      if(dateFromPicker !=="") {
+      if(dateToSearch !== 'Invalid Date'){
+          if( filterDate !== 'Invalid Date' ){
+              if(stringDate === newDateToSearch){
+                  return el
+              } 
+          }
+      }
+    }
+      else{
+          return el
+      }
+      
+      
+      
+    });
 
       currentData = dataSearch.slice(start,end);
 
@@ -97,6 +98,7 @@ function Cards({cn,cs,date,sp}) {
     length={post['Length']}
     vidUrl={post['Video(Url)']}
     />
+    
     </div>
   ))
 }

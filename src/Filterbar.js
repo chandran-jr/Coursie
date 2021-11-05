@@ -15,22 +15,29 @@ import Cards from './Cards';
 
 function Filterbar() {
 
-    const [value, setValue] = useState();
+    const [value, setValue] = useState("");
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
     const [course,setCourse] = useState("");
     const [childSub,setchildSub] = useState("");
     const [checked,setChecked] = useState(false);
     const [cardShow,setcardShow] = useState(<Cards
-        cn={course}
-        cs={childSub}
-        date={value}
-        sp={checked}
+        cn={""}
+        cs={""}
+        date={""}
+        sp={false}
     />);
 
     const refresh = () => {
         setCourse("");
         setchildSub("");
-        setValue(null);
+        setValue("");
+        setChecked(false);
+        setcardShow(<Cards
+            cn={""}
+            cs={""}
+            date={""}
+            sp={false}
+        />);
     }
 
     const search = () => {
@@ -62,12 +69,11 @@ function Filterbar() {
             </div>
 
 
-            <div className="Filterbar__card">
+            <div className="Filterbar__cardDate">
             <LocalizationProvider className="Filterbar__cardInputdate" dateAdapter={AdapterDateFns}>
                 <DatePicker
                 label="Date"
                 value={value}
-                border="none"
                 onChange={(newValue) => {
                 setValue(newValue);
                         }}
