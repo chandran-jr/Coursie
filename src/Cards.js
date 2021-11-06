@@ -22,13 +22,17 @@ function Cards({cn,cs,date,sp}) {
     let currentData;
 
     useEffect(()=>{
-      setLoading(true);
-        axios.get('https://nut-case.s3.amazonaws.com/coursessc.json')
+      async function fetchHandle () {
+        setLoading(true);
+        await axios.get('https://nut-case.s3.amazonaws.com/coursessc.json')
        .then((response)=>{
          setSubjects(response.data.slice(0,300));
        })
        setLoading(false);
-     });
+      }
+      fetchHandle()
+      
+     },[]);
 
      function convert(str) {
       var date = new Date(str),
@@ -99,7 +103,7 @@ function Cards({cn,cs,date,sp}) {
         }
     }
 
-    const loadingSnippet = ()=>{
+    const loadingIcon = ()=>{
       return( <div class="loader" role="status">
     </div>)
   }
@@ -114,7 +118,7 @@ function Cards({cn,cs,date,sp}) {
     <Count length={dataSearch.length} />
     </div>
 
-    { loading ? loadingSnippet() : noCourse()  }
+    { loading ? loadingIcon() : noCourse() }
 
 {currentData.map((post, index) => (
     <div key={index}>

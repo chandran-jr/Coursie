@@ -17,7 +17,7 @@
 }
 
 .Card:hover{
-    border: 4px solid rgb(0, 119, 255);
+    border: 4px solid rgb(25, 118, 210);
     transition: color 250ms ease-in-out;
 }
 

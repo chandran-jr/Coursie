@@ -69,8 +69,8 @@ function Filterbar() {
             </div>
 
 
-            <div className="Filterbar__cardDate">
-            <LocalizationProvider className="Filterbar__cardInputdate" dateAdapter={AdapterDateFns}>
+            <div className="Filterbar__card">
+            <LocalizationProvider dateAdapter={AdapterDateFns}>
                 <DatePicker
                 label="Date"
                 value={value}
