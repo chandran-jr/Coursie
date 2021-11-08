@@ -4,6 +4,7 @@ import Card from './Card.js';
 import axios from 'axios';
 import Pagination from '@mui/material/Pagination';
 import Count from './Count.js';
+import Graph from './Graph';
 
 
 function Cards({cn,cs,date,sp}) {
@@ -87,7 +88,7 @@ function Cards({cn,cs,date,sp}) {
     });
 
 
-      currentData = dataSearch.slice(start,end);
+    currentData = dataSearch.slice(start,end);
 
      const handleChange = (event, value) => {
         setcurrentPage(value);
@@ -112,16 +113,18 @@ function Cards({cn,cs,date,sp}) {
 
 
     return (
-    <div className="Cards">
 
-    <div className="count">
-    <Count length={dataSearch.length} />
-    </div>
+      <div className="Cards">
+
+      <div className="count">
+        <Count length={dataSearch.length} />
+      </div>
+
+    <div className="Cards__card">
 
     { loading ? loadingIcon() : noCourse() }
 
 {currentData.map((post, index) => (
-    <div key={index}>
     <Card
     courseId={post['Course Id']}
     courseName={post['Course Name']}
@@ -135,16 +138,27 @@ function Cards({cn,cs,date,sp}) {
     vidUrl={post['Video(Url)']}
     />
     
-    </div>
   ))
 }
 
-    {
+</div>
+
+{
         dataSearch ? <Pagination className="pagination" count={Math.round(dataSearch.length/6)} page={currentPage} onChange={handleChange} color='primary' style={{margin:'auto'}} />:null
     }
 
+   {dataSearch ? <Graph
+      data={subjects}/> : <Graph data={subjects}
+    /> }
+
+    <div className="nothing">
+
+    </div>
+
+
         </div>
     )
+
 }
 
 export default Cards

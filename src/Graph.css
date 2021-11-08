@@ -1,0 +1,30 @@
+.graph {
+    margin: 40px auto;
+    border: 7px solid rgb(241, 47, 112);
+    background-color: white;
+    border-radius: 20px;
+    width: 55%;   
+}
+
+.form {
+    margin: auto;
+    width: fit-content;
+    margin-top: 30px;
+}
+
+
+
+.MuiFormLabel-root {
+    color: rgb(241, 47, 112) !important;
+}
+
+.css-gga68z-MuiInputBase-input {
+    color: rgb(25, 118, 210) !important;
+    font-weight: bold !important;
+}
+
+.renderGraph {
+    display: grid;
+    place-items: center;
+    margin-top: 40px;
+}

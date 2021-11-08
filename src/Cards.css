@@ -1,4 +1,6 @@
-.Cards {
+
+
+.Cards__card {
     display: flex;
     flex-wrap: wrap;
     width: 80%;
@@ -14,17 +16,20 @@
 
 .pagination {
     width: fit-content;
-    position:absolute;
-    margin: auto;
-    top: 100%;
-    
+    display: grid;
+    place-items: center;
+    margin: 10px;
 }
 
 .count {
-   position: absolute;
-   left: 525px;
-   bottom: 535px;
- 
+ font-size: 20px;
+ top: 110px;
+ left: 43.5%;
+ position: absolute;
+}
+
+.nothing {
+    margin-top: 20px;
 }
 
 .loader {
