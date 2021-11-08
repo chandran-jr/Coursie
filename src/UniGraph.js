@@ -21,7 +21,7 @@ const UniGraph = ({data}) => {
     const series = [
         {
           name: "Parent subject", //will be displayed on the y-axis
-          data: [19, 32, 15, 48, 26, 11, 23, 10]
+          data: parentCount,
         }
       ];
 
@@ -34,16 +34,7 @@ const UniGraph = ({data}) => {
 
         
         xaxis: {
-          categories: [
-            ['John', 'Doe'],
-            ['Joe', 'Smith'],
-            ['Jake', 'Williams'],
-            'Amber',
-            ['Peter', 'Brown'],
-            ['Mary', 'Evans'],
-            ['David', 'Wilson'],
-            ['Lily', 'Roberts'], 
-          ], 
+          categories: uniqueParent,
           labels: {
             style: {
               colors: colors,
