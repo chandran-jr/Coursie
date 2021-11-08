@@ -26,10 +26,10 @@ function Graph({data}) {
 
         <div className="form">
             <FormControl>
-    <InputLabel>Graphs</InputLabel>
+    <InputLabel>Parent Subject</InputLabel>
     <Select onChange={changeFunc} style={{ width: 200 }}>
+    <MenuItem value={20}>Parent Subject</MenuItem>
     <MenuItem value={10}>University</MenuItem>
-    <MenuItem value={20}>Child Subject</MenuItem>
     </Select>
     </FormControl>
 

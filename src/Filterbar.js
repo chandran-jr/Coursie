@@ -83,7 +83,7 @@ function Filterbar() {
             </div>
 
             <div className="Filterbar__cardCheck">
-            <Checkbox onChange={checkboxClick} {...label} />
+            <Checkbox checked={checked} onChange={checkboxClick} {...label} />
             <h3>Self Paced</h3>
              </div>
 

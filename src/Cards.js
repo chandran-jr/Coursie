@@ -27,7 +27,7 @@ function Cards({cn,cs,date,sp}) {
         setLoading(true);
         await axios.get('https://nut-case.s3.amazonaws.com/coursessc.json')
        .then((response)=>{
-         setSubjects(response.data.slice(0,300));
+         setSubjects(response.data.slice(0,60));
        })
        setLoading(false);
       }
@@ -111,7 +111,6 @@ function Cards({cn,cs,date,sp}) {
 
 
 
-
     return (
 
       <div className="Cards">
@@ -124,7 +123,7 @@ function Cards({cn,cs,date,sp}) {
 
     { loading ? loadingIcon() : noCourse() }
 
-{currentData.map((post, index) => (
+{currentData.map((post) => (
     <Card
     courseId={post['Course Id']}
     courseName={post['Course Name']}
@@ -147,13 +146,7 @@ function Cards({cn,cs,date,sp}) {
         dataSearch ? <Pagination className="pagination" count={Math.round(dataSearch.length/6)} page={currentPage} onChange={handleChange} color='primary' style={{margin:'auto'}} />:null
     }
 
-   {dataSearch ? <Graph
-      data={subjects}/> : <Graph data={subjects}
-    /> }
-
-    <div className="nothing">
-
-    </div>
+    <Graph data={currentData}/> 
 
 
         </div>

@@ -1,11 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactApexChart from "react-apexcharts";
 
-const UniGraph = (props) => {
+const UniGraph = ({data}) => {
+
+  const [parent,setParent] = useState([]);
+
+    useEffect(() => {
+        setParent(data.map(res => {return res['Universities/Institutions']}));
+    },[data])
+      
+    const uniqueParent = ([...new Set(parent)])
+    var parentLength = uniqueParent.length;
+    const aCount = new Map([...new Set(parent)].map(
+        x => [x, parent.filter(y => y === x).length]
+    ));
+    const parentCount=[]
+    for (var i=0;i<parentLength;i++){
+        parentCount.push(aCount.get(uniqueParent[i]))
+    }
     const series = [
         {
           name: "Parent subject", //will be displayed on the y-axis
-          data: [21, 22, 10, 28, 16, 21, 13, 30]
+          data: [19, 32, 15, 48, 26, 11, 23, 10]
         }
       ];
 

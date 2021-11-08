@@ -22,14 +22,10 @@
 }
 
 .count {
- font-size: 20px;
+ font-size: 18px;
  top: 110px;
- left: 43.5%;
+ left: 44.2%;
  position: absolute;
-}
-
-.nothing {
-    margin-top: 20px;
 }
 
 .loader {
