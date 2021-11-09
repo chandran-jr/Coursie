@@ -32,6 +32,21 @@ const UniGraph = ({data}) => {
           id: "simple-bar"
         },
 
+        dataLabels: {
+          enabled: true
+        },
+        legend: {
+          show: true,
+          position: 'top',
+        },
+
+        colors: colors,
+            plotOptions: {
+              bar: {
+                columnWidth: '45%',
+                distributed: true,
+              }
+            },
         
         xaxis: {
           categories: uniqueParent,

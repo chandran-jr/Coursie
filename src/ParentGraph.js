@@ -27,6 +27,7 @@ const ParentGraph = ({data}) => {
         }
       ];
 
+
      const colors = ["#269FFB","#26E7A5","#FEBB3B","#FF6077","#8B75D7","#6D838D","#46B3A9","#D730EB"];
       
       const options = {
@@ -34,7 +35,21 @@ const ParentGraph = ({data}) => {
           id: "simple-bar",
         },
 
+        dataLabels: {
+            enabled: true
+          },
+          legend: {
+            show: true,
+            position: 'top',
+          },
 
+          colors: colors,
+              plotOptions: {
+                bar: {
+                  columnWidth: '45%',
+                  distributed: true,
+                }
+              },
 
         xaxis: {
           categories: uniqueParent,
@@ -46,6 +61,7 @@ const ParentGraph = ({data}) => {
           }
         }
       };
+      
       return (
         <div>
           <ReactApexChart options={options} type="bar" series={series} width="220%" />
