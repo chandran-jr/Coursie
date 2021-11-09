@@ -16,6 +16,7 @@ function Cards({cn,cs,date,sp}) {
     const [start,setStart] = useState(0);
     const [loading,setLoading] = useState(false);
     const [end,setEnd] = useState(6);
+    const [renderGraph,setrenderGraph] = useState(true);
     const dateFromPicker = date;
     const dateToSearch = new Date(dateFromPicker);
     dateToSearch.setHours(0,0,0,0);
@@ -99,8 +100,9 @@ function Cards({cn,cs,date,sp}) {
       };
 
       const noCourse = ()=>{
+
         if(dataSearch == ''){
-            return <h3 className="noCourses">No course found !!</h3>
+          return <h3 className="noCourses">No course found !!</h3>
         }
     }
 
@@ -109,6 +111,15 @@ function Cards({cn,cs,date,sp}) {
     </div>)
   }
 
+
+  useEffect(() => {
+    if(dataSearch == '') {
+      setrenderGraph(false);
+    }
+    else {
+      setrenderGraph(true);
+    }
+  },[dataSearch]);
 
 
     return (
@@ -143,10 +154,10 @@ function Cards({cn,cs,date,sp}) {
 </div>
 
 {
-        dataSearch ? <Pagination className="pagination" count={Math.round(dataSearch.length/6)} page={currentPage} onChange={handleChange} color='primary' style={{margin:'auto'}} />:null
+        dataSearch ? <Pagination className="pagination" count={Math.round(dataSearch.length/6)} page={currentPage} onChange={handleChange} color='primary' style={{margin:'auto'}} />: null
     }
 
-    <Graph data={currentData}/> 
+    {renderGraph ? <Graph data={currentData}/> : null }
 
 
         </div>
