@@ -13,7 +13,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import Cards from './Cards';
 
 
-function Filterbar() {
+function Filterbar(props) {
 
     const [value, setValue] = useState("");
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
@@ -25,6 +25,7 @@ function Filterbar() {
         cs={""}
         date={""}
         sp={false}
+        subjectData={props.props}
     />);
 
     const refresh = () => {
@@ -37,6 +38,7 @@ function Filterbar() {
             cs={""}
             date={""}
             sp={false}
+            subjectData={props.props}
         />);
     }
 
@@ -46,6 +48,7 @@ function Filterbar() {
                 cs={childSub}
                 date={value}
                 sp={checked}
+                subjectData={props.props}
             />);
     }
 

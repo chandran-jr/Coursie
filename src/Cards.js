@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import './Cards.css';
 import Card from './Card.js';
-import axios from 'axios';
 import Pagination from '@mui/material/Pagination';
 import Count from './Count.js';
 import Graph from './Graph';
 
 
-function Cards({cn,cs,date,sp}) {
+function Cards({cn,cs,date,sp,subjectData}) {
 
     const [subjects,setSubjects] = useState([]);
     const [currentPage,setcurrentPage] = useState(1);
@@ -21,20 +20,15 @@ function Cards({cn,cs,date,sp}) {
     const dateToSearch = new Date(dateFromPicker);
     dateToSearch.setHours(0,0,0,0);
 
-    let currentData;
-
     useEffect(()=>{
-      async function fetchHandle () {
-        setLoading(true);
-        await axios.get('https://nut-case.s3.amazonaws.com/coursessc.json')
-       .then((response)=>{
-         setSubjects(response.data.slice(0,60));
-       })
-       setLoading(false);
-      }
-      fetchHandle()
+      if(subjectData.subjects) {
+         setSubjects(subjectData.subjects.slice(0,60));}
+         console.log("Hello fetch");
+       },[subjectData.subjects])
       
-     },[]);
+
+    let currentData;
+    let dataSearch;
 
      function convert(str) {
       var date = new Date(str),
@@ -44,7 +38,8 @@ function Cards({cn,cs,date,sp}) {
     }
   const newDateToSearch = convert(dateToSearch);
 
-     let dataSearch  = subjects.filter(item =>{
+    if(subjects) {
+      dataSearch  = subjects.filter(item =>{
         return Object.keys(item).some(key =>{
            return includeCourse.includes(key) ? item[key].toString().toLowerCase().includes(cn.toString().toLowerCase()) : false }
             )
@@ -87,6 +82,8 @@ function Cards({cn,cs,date,sp}) {
       
       
     });
+
+  }
 
 
     currentData = dataSearch.slice(start,end);
@@ -164,5 +161,6 @@ function Cards({cn,cs,date,sp}) {
     )
 
 }
+
 
 export default Cards
