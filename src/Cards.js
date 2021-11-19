@@ -9,16 +9,29 @@ import Graph from './Graph';
 
 function Cards({cn,cs,date,sp}) {
 
+  const reduxState = useSelector(state => state.subjects)
+  const loadingRedux = useSelector(state => state.loading)
+
+
+  console.log(reduxState);
+
+  useEffect(() => {
+    if(reduxState) { 
+      setSubjects(reduxState.slice(0,600));}
+},[reduxState]);
+
+useEffect(() => { 
+    setLoading(loadingRedux)
+},[loadingRedux]);
+
 
     const [subjects,setSubjects] = useState([]);
-    setSubjects(useSelector(state => state.subjects));
-    console.log(subjects);
+
     const [currentPage,setcurrentPage] = useState(1);
     const includeCourse = ['Course Name'];
     const includeChild = ['Child Subject'];
     const [start,setStart] = useState(0);
     const [loading,setLoading] = useState(false);
-    setLoading(useSelector(state => state.subjects))
     const [end,setEnd] = useState(6);
     const [renderGraph,setrenderGraph] = useState(true);
     const dateFromPicker = date;
