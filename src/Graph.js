@@ -11,7 +11,6 @@ function Graph({data}) {
 
     const changeFunc = (e) => {
         setOption(e.target.value);
-        console.log(option);
       
         if(option===20) {
           setUniv(true);

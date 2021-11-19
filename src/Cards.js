@@ -1,30 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import './Cards.css';
+import { useSelector } from "react-redux";
 import Card from './Card.js';
 import Pagination from '@mui/material/Pagination';
 import Count from './Count.js';
 import Graph from './Graph';
 
 
-function Cards({cn,cs,date,sp,subjectData}) {
+function Cards({cn,cs,date,sp}) {
+
 
     const [subjects,setSubjects] = useState([]);
+    setSubjects(useSelector(state => state.subjects));
+    console.log(subjects);
     const [currentPage,setcurrentPage] = useState(1);
     const includeCourse = ['Course Name'];
     const includeChild = ['Child Subject'];
     const [start,setStart] = useState(0);
     const [loading,setLoading] = useState(false);
+    setLoading(useSelector(state => state.subjects))
     const [end,setEnd] = useState(6);
     const [renderGraph,setrenderGraph] = useState(true);
     const dateFromPicker = date;
     const dateToSearch = new Date(dateFromPicker);
     dateToSearch.setHours(0,0,0,0);
-
-    useEffect(()=>{
-      if(subjectData.subjects) {
-         setSubjects(subjectData.subjects.slice(0,60));}
-         console.log("Hello fetch");
-       },[subjectData.subjects])
       
 
     let currentData;
@@ -38,7 +37,6 @@ function Cards({cn,cs,date,sp,subjectData}) {
     }
   const newDateToSearch = convert(dateToSearch);
 
-    if(subjects) {
       dataSearch  = subjects.filter(item =>{
         return Object.keys(item).some(key =>{
            return includeCourse.includes(key) ? item[key].toString().toLowerCase().includes(cn.toString().toLowerCase()) : false }
@@ -82,8 +80,6 @@ function Cards({cn,cs,date,sp,subjectData}) {
       
       
     });
-
-  }
 
 
     currentData = dataSearch.slice(start,end);

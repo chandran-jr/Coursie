@@ -9,11 +9,13 @@ import DatePicker from '@mui/lab/DatePicker';
 import Checkbox from '@mui/material/Checkbox';
 import Button from '@mui/material/Button';
 import RefreshIcon from '@mui/icons-material/Refresh';
+import store from "./redux/store"
 import SearchIcon from '@mui/icons-material/Search';
 import Cards from './Cards';
+import { Provider } from 'react-redux';
 
 
-function Filterbar(props) {
+function Filterbar() {
 
     const [value, setValue] = useState("");
     const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
@@ -25,8 +27,8 @@ function Filterbar(props) {
         cs={""}
         date={""}
         sp={false}
-        subjectData={props.props}
-    />);
+    />
+    );
 
     const refresh = () => {
         setCourse("");
@@ -38,8 +40,8 @@ function Filterbar(props) {
             cs={""}
             date={""}
             sp={false}
-            subjectData={props.props}
-        />);
+        />
+       );
     }
 
     const search = () => {
@@ -48,8 +50,8 @@ function Filterbar(props) {
                 cs={childSub}
                 date={value}
                 sp={checked}
-                subjectData={props.props}
-            />);
+            />
+            );
     }
 
     const checkboxClick = (e) => {
@@ -99,7 +101,9 @@ function Filterbar(props) {
 
         </div>
 
+        <Provider store={store}>
         {cardShow}
+        </Provider>
 
         </div>
     )
